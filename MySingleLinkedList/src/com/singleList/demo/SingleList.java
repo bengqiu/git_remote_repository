@@ -10,11 +10,11 @@ class Node<T> {
 }
 
 public class SingleList<T> {
-	private Node<T> head;// 头结点，不是firstNode first = head.next;
+	private Node<T> head = null;// 头结点，不是firstNode first = head.next;
 	private int theSize = 0;
 
-	public SingleList() {
-		head = new Node("");
+	public SingleList(T data) {
+		head = new Node<T>(data);
 		head.next = null;
 		theSize = 0;
 	}
@@ -69,21 +69,46 @@ public class SingleList<T> {
 		insert(theSize, data);
 	}
 
+	// public boolean removeNode(int idx) {
+	// if (head.next == null) {
+	// System.out.println("链表为空，删除失败！");
+	// }
+	// if (idx == 0 || head.next.next == null) {// 删除第一个节点或者只有一个数据元素
+	// // Node<T> p = firstNode;
+	// // firstNode = p.next;
+	// Node<T> p = head.next;
+	// head.next = p.next;
+	// // head.next = head.next.next;
+	// theSize--;
+	// } else {
+	// Node<T> p = getNode(idx - 1);
+	// Node<T> q = p.next;
+	// p.next = q.next;
+	// theSize--;
+	// }
+	// return true;
+	// }
+
 	public boolean removeNode(int idx) {
 		if (head.next == null) {
-			System.out.println("链表为空，删除失败！");
+			System.out.println("链表为空，删除失败");
+			return false;
 		}
-		if (idx == 0 || head.next.next == null) {// 删除第一个节点或者只有一个数据元素
-			// Node<T> p = firstNode;
-			// firstNode = p.next;
+		if (idx < 0 || idx >= theSize) {
+			System.out.println("索引范围越界");
+			return false;
+		}
+		if (idx == 0 || head.next.next == null) {// 删除第一个或者链表中只有一个元素时
 			Node<T> p = head.next;
 			head.next = p.next;
-			// head.next = head.next.next;
+			p = null;
 			theSize--;
 		} else {
+			// 删除idx位置的节点q
 			Node<T> p = getNode(idx - 1);
-			Node<T> q = p.next;
+			Node<T> q = p.next;// 根据idx-1位置的节点获取第idx位置的节点
 			p.next = q.next;
+			q = null;
 			theSize--;
 		}
 		return true;

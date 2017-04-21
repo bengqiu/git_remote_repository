@@ -1,7 +1,8 @@
 package com.singleList.demo;
 
 public class SingleListTest {
-	SingleList<String> singleList = new SingleList<String>();
+	SingleList<String> singleList = new SingleList<String>("");
+
 	/**
 	 * 构建单链表(头插法或尾插法)
 	 * 
@@ -20,24 +21,32 @@ public class SingleListTest {
 			}
 		}
 	}
-	
+
 	private void displaySingleList() {
 		singleList.disPlay();
+	}
+
+	private void removeAfterAndDispaly() {
+		singleList.removeNode(3);// 删除第三个节点d
+		System.out.println();
+		displaySingleList();
 	}
 
 	public static void main(String args[]) {
 		String str = "abcdefg";
 		SingleListTest testClass = null;
 		testClass = new SingleListTest();
-		//创建单链表(头插法)
-		testClass.createSingleList(str, true);
-		//遍历单链表
-		testClass.displaySingleList();
-		System.out.println();
-		testClass = new SingleListTest();
-		//创建单链表(尾插法)
+		// --1.创建单链表(尾插法)，顺序创建
 		testClass.createSingleList(str, false);
-		//遍历单链表
+		// --2. 遍历单链表
 		testClass.displaySingleList();
+
+		// --3.删除第3个位置节点元素 "d",并遍历
+		testClass.removeAfterAndDispaly();
+		// testClass = new SingleListTest();
+		// // 创建单链表(头插法)，逆序创建
+		// testClass.createSingleList(str, false);
+		// // 遍历单链表
+		// testClass.displaySingleList();
 	}
 }
