@@ -26,8 +26,9 @@ public class SingleListTest {
 		singleList.disPlay();
 	}
 
-	private void removeAfterAndDispaly() {
-		singleList.removeNode(3);// 删除第三个节点d
+	private void removeAfterAndDispaly(int index) {
+		System.out.print("\n删除第" + (index + 1) + "个节点后，遍历结果：");
+		singleList.removeNode(index);// 删除第三个节点d
 		System.out.println();
 		displaySingleList();
 	}
@@ -42,7 +43,7 @@ public class SingleListTest {
 		testClass.displaySingleList();
 
 		// --3.删除第3个位置节点元素 "d",并遍历
-		testClass.removeAfterAndDispaly();
+		testClass.removeAfterAndDispaly(0);
 		// testClass = new SingleListTest();
 		// // 创建单链表(头插法)，逆序创建
 		// testClass.createSingleList(str, false);
