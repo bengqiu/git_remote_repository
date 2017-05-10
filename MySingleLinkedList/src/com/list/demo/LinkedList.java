@@ -69,6 +69,17 @@ public class LinkedList<AnyType> {
 	/**
 	 * 遍历单链表
 	 */
+	public void printList(Node<AnyType> first) {
+		System.out.print("遍历链表:\t");
+		for (Node<AnyType> p = first; p != null; p = p.next) {
+			if (p.next == null) {
+				System.out.print(p.data + "\n");
+			} else {
+				System.out.print(p.data + "——>");
+			}
+		}
+	}
+
 	public void printList() {
 		System.out.print("遍历链表:\t");
 		for (Node<AnyType> p = firstNode; p != null; p = p.next) {
@@ -91,10 +102,61 @@ public class LinkedList<AnyType> {
 	 * 在某个位置插入(整合判断成功还是失败提示)
 	 */
 	public void addElement(int index, AnyType data) {
-		if (add(index-1, data)) {//第几个位置，单独处理下
+		if (add(index - 1, data)) {// 第几个位置，单独处理下
 			System.out.println("第" + index + "个位置插入数据【" + data + "】成功！");
 		} else {
 			System.out.println("第" + index + "个位置插入数据【" + data + "】成功！");
 		}
+	}
+
+	/**
+	 * 逆置单链表
+	 */
+	public Node<AnyType> reverseList() {
+		// 使用头插法(需要三个节点：head、 p、q)
+		// Node<AnyType> head = new Node<AnyType>(null);
+		// head.next = firstNode;
+		// Node<AnyType> prev = head.next;
+		// Node<AnyType> pCur = prev.next;
+		// while(pCur!=null){
+		// prev.next = pCur.next;
+		// pCur.next = head.next;
+		// head.next = pCur;
+		// pCur = prev.next;
+		// }
+		Node<AnyType> p = firstNode;
+		Node<AnyType> newNode = null;
+		Node<AnyType> temp = null;
+		while (p != null) {
+			temp = p.next;
+			p.next = newNode;
+			newNode = p;
+			p = temp;
+		}
+		return newNode;// 返回第一个结点
+	}
+
+	public Node<AnyType> get_firstNode() {
+		return firstNode;
+	}
+	// 1 --> 2---3 --->4
+	// p q p q
+	// q = p.next;
+	// p.next = null;
+
+	/**
+	 * 需要一个head, prev, pCur
+	 * 
+	 * @return
+	 */
+	public Node<AnyType> reverseNode2() {
+		Node<AnyType> head = new Node<AnyType>(null);
+		head.next = firstNode;
+		Node<AnyType> prev = head.next;
+		Node<AnyType> pCur = prev.next;
+		while (pCur != null) {
+           
+		}
+		return null;
 	}
 }

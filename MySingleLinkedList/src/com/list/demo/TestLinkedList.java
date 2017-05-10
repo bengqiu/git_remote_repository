@@ -24,7 +24,7 @@ public class TestLinkedList {
 		System.out.println("输入一串字符串:");
 		Scanner scanner = new Scanner(System.in);
 		str = scanner.nextLine();
-		String[] arrays = str.split("、");
+		String[] arrays = str.split(",");
 		for (int i = 0; i < arrays.length; i++) {
 			linkedList.addLast(arrays[i]);
 		}
@@ -32,7 +32,7 @@ public class TestLinkedList {
 		/**
 		 * 遍历单链表
 		 */
-		linkedList.printList();
+		linkedList.printList(linkedList.get_firstNode());
 
 		/**
 		 * 获取单链表长度
@@ -42,9 +42,11 @@ public class TestLinkedList {
 		/**
 		 * 第三个位置插入67，第9个位置插入10
 		 */
-		linkedList.addElement(7, "67");
-//		linkedList.addElement(9, "10");
-		System.out.println("插入之后，遍历单链表：");
+//		linkedList.addElement(7, "67");
+//		linkedList.addEleme1nt(9, "10");
+//		System.out.println("插入之后，遍历单链表：");
+//		System.out.println(linkedList.reverseList().data);
+		linkedList.reverseList();
 		linkedList.printList();
 	}
 }

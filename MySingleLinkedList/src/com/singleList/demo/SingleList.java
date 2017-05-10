@@ -127,4 +127,13 @@ public class SingleList<T> {
 			}
 		}
 	}
+	
+	public Node<T> reverseList(){
+		Node<T> p = head.next;
+		Node<T> q = head.next.next;
+		while(q !=null){
+			
+		}
+		return null;
+	}
 }
